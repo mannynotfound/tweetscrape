@@ -1,0 +1,9 @@
+data/analyze/*
+!data/analyze/empty.json
+data/favs/*
+!data/favs/empty.json
+data/follows/*
+!data/follows/empty.json
+data/tweets/*
+!data/tweets/empty.json
+accounts*
