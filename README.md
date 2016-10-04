@@ -1,14 +1,10 @@
 # tweetscrape
 
-Recursively scrape Twitter networks.
-
 <p align="center">
   <img width="80%" src="cover.png" />
 </p>
 
-## about
-
-`tweetscrape` is a multi purpose Twitter scraper. It can scrape tweets, favs, follows, for
+`tweetscrape` is a multi purpose Twitter scraper. It can scrape tweets, favs and follows for
 a single user or recursively through a users network. 
 
 ## usage
