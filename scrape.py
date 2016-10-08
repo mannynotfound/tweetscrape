@@ -18,7 +18,7 @@ def tweetscrape(screen_name=None, api_route='tweets', max_results=3200):
     response = make_twitter_request(api_route, **kw)
 
     if response is None: # 401 (Not Authorized) - Need to bail out on loop entry
-        response = []
+        return None
 
     results = response
     total = len(response)
@@ -64,7 +64,6 @@ def save_tweetscrape(user, route):
 
     results = tweetscrape(screen_name=user, api_route=route)
     save_json(route, user, results)
-
 
 
 if __name__ == '__main__':

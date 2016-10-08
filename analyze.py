@@ -64,6 +64,10 @@ def analyze(user):
     if all_data.get('follows'):
         analyze_follows(all_data.get('follows'))
 
+    if len(hits) is 0:
+        print('NO DATA TO ANALYZE')
+        return []
+
     print('')
     print('ANALYZED {0} ==> '.format(user.upper()))
     print('')

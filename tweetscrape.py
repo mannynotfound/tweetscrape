@@ -14,19 +14,19 @@ def scrape_single(user):
             print('{} - NO {} FOUND... SCRAPIN SOME'.format(user, data))
             save_tweetscrape(user, data)
 
-    return analyze(user)
+    try:
+        analysis = json_tools.load_json('analyze', user)
+        return [t[0] for t in analysis['top_8']]
+    except Exception as e:
+        return analyze(user)
 
 
 def add_to_scrape(group):
     counter = 0
     for g in group:
-        for data in ['tweets', 'favs', 'follows']:
-            try:
-                exists = json_tools.load_json(data, g)
-            except Exception as e:
-                if g not in to_scrape:
-                    counter += 1
-                    to_scrape.append(g)
+        if g not in to_scrape:
+            counter += 1
+            to_scrape.append(g)
 
     print('ADDED {} TO SCRAPE'.format(counter))
 
@@ -37,7 +37,10 @@ def scrape_group(group):
         scraped_top_8 = scrape_single(g)
         add_to_scrape(scraped_top_8)
 
-    scrape_group(to_scrape)
+    if len(to_scrape):
+        scrape_group(to_scrape)
+    else:
+        print('NO MORE TO SCRAPE!')
 
 
 def scrape_all(user, recursive):
